@@ -61,6 +61,130 @@ ip route show exact default
 
 
 
+## solaar 羅技鍵鼠設定
+
+```rules.yaml
+%YAML 1.3
+---
+- Rule:
+  - Key: [Emoji Smiley Heart Eyes, pressed]
+  - KeyPress:
+    - End
+    - click
+- Rule:
+  - Key: [Emoji Crying Face, pressed]
+  - KeyPress:
+    - Insert
+    - click
+- Rule:
+  - Key: [Emoji Smiley, pressed]
+  - KeyPress:
+    - KP_Multiply
+    - click
+- Rule:
+  - Key: [Emoji Smilie With Tears, pressed]
+  - KeyPress:
+    - Page_Up
+    - click
+- Rule:
+  - Key: [Emoji, pressed]
+  - KeyPress:
+    - Page_Down
+    - click
+- Rule:
+  - Key: [Dictation, pressed]
+  - KeyPress:
+    - Home
+    - click
+- Rule:
+  - Key: [Left Tilt, pressed]
+  - KeyPress:
+    - Left
+    - click
+- Rule:
+  - Key: [Right Tilt, pressed]
+  - KeyPress:
+    - Right
+    - click
+- Rule:
+  - Key: [Forward Button, pressed]
+  - KeyPress:
+    - XF86_AudioRaiseVolume
+    - click
+- Rule:
+  - Key: [Back Button, pressed]
+  - KeyPress:
+    - XF86_AudioLowerVolume
+    - click
+- Rule:
+  - Key: [MultiPlatform Gesture Button, pressed]
+  - KeyPress:
+    - [Super_L, d]
+    - click
+...
+```
+
+```config.yaml
+- 1.1.19+202601102018
+- _NAME: M720 Triathlon Multi-Device Mouse
+  _absent: [hi-res-scroll, lowres-scroll-mode, scroll-ratchet, scroll-ratchet-torque, smart-shift, thumb-scroll-invert, thumb-scroll-mode, onboard_profiles,
+    report_rate, report_rate_extended, dpi, dpi_extended, speed-change, backlight, backlight_level, backlight_duration_hands_out, backlight_duration_hands_in,
+    backlight_duration_powered, backlight-timed, led_control, led_zone_, rgb_control, rgb_zone_, brightness_control, per-key-lighting, fn-swap, disable-keyboard-keys,
+    force-sensing, crown-smooth, divert-crown, divert-gkeys, m-key-leds, mr-key-led, multiplatform, gesture2-gestures, gesture2-divert, gesture2-params,
+    haptic-level, haptic-play, sidetone, equalizer, adc_power_management]
+  _battery: 4096
+  _modelId: B015405E0000
+  _sensitive: {divert-keys: true, hires-scroll-mode: ignore, hires-smooth-invert: ignore, hires-smooth-resolution: ignore, persistent-remappable-keys: false,
+    reprogrammable-keys: false}
+  _serial: 2970F04D
+  _unitId: 42E1C161
+  _wpid: 405E
+  change-host: null
+  divert-keys: {82: 0, 83: 1, 86: 1, 91: 1, 93: 1, 208: 1}
+  hires-scroll-mode: false
+  hires-smooth-invert: false
+  hires-smooth-resolution: true
+  persistent-remappable-keys: null
+  pointer_speed: 256
+  reprogrammable-keys: {80: 80, 81: 81, 82: 82, 83: 83, 86: 86, 91: 91, 93: 93, 208: 208}
+- _NAME: Logi POP Keys
+  _absent: [hi-res-scroll, lowres-scroll-mode, hires-smooth-invert, hires-smooth-resolution, hires-scroll-mode, scroll-ratchet, scroll-ratchet-torque, smart-shift,
+    thumb-scroll-invert, thumb-scroll-mode, onboard_profiles, report_rate, report_rate_extended, pointer_speed, dpi, dpi_extended, speed-change, backlight,
+    backlight_level, backlight_duration_hands_out, backlight_duration_hands_in, backlight_duration_powered, backlight-timed, led_control, led_zone_, rgb_control,
+    rgb_zone_, brightness_control, per-key-lighting, reprogrammable-keys, persistent-remappable-keys, force-sensing, crown-smooth, divert-crown, divert-gkeys,
+    m-key-leds, mr-key-led, gesture2-gestures, gesture2-divert, gesture2-params, haptic-level, haptic-play, sidetone, equalizer, adc_power_management]
+  _battery: 4100
+  _modelId: B36500000000
+  _sensitive: {change-host: false, disable-keyboard-keys: false, divert-keys: false, fn-swap: false, hires-scroll-mode: ignore, hires-smooth-invert: ignore,
+    hires-smooth-resolution: ignore, multiplatform: false}
+  _serial: 4574B50F
+  _unitId: 4574B50F
+  _wpid: B365
+  change-host: null
+  disable-keyboard-keys: {1: false, 8: false, 16: false}
+  divert-keys: {110: 0, 228: 0, 229: 0, 230: 0, 231: 0, 232: 0, 233: 0, 259: 1, 260: 1, 261: 1, 262: 1, 263: 1, 264: 1, 266: 0, 284: 0}
+  fn-swap: false
+  multiplatform: 0
+- _NAME: Multi Device Silent Mouse M585/M590
+  _sensitive: {hires-scroll-mode: ignore, hires-smooth-invert: ignore, hires-smooth-resolution: ignore}
+  _serial: D45F50D4
+  _wpid: 406B
+- _NAME: K850
+  _sensitive: {hires-scroll-mode: ignore, hires-smooth-invert: ignore, hires-smooth-resolution: ignore}
+  _serial: CAC00B70
+  _wpid: '4062'
+- _NAME: Logi POP Keys
+  _sensitive: {hires-scroll-mode: ignore, hires-smooth-invert: ignore, hires-smooth-resolution: ignore}
+  _serial: 4574B50F
+  _wpid: B365
+- _NAME: Logi POP Mous
+  _sensitive: {hires-scroll-mode: ignore, hires-smooth-invert: ignore, hires-smooth-resolution: ignore}
+  _serial: C5655072
+  _wpid: B030
+
+```
+
+
 # 除錯相關
 
 ## 問題一 每次開機 聲音都變成 線路輸出 可以用一個腳本？ 還是改啥設定 開機預設聲音就預設hdmi輸出嗎？
@@ -109,6 +233,7 @@ EOF
 執行完畢後就設定完成了！下次開機時，系統就會自動在背景執行這個指令，將聲音預設為 HDMI 輸出。
 
 ### 結果待確認
+    2026/5/29 開機確認有效
 
 ## 問題二：NVIDIA HDMI 音訊更新斷線修復與持久化方案
 這是我之前紀錄的關於系統更新後，導致 NVIDIA HDMI 聲音斷線的修復方案與自動化腳本。
@@ -177,4 +302,3 @@ systemctl --user enable wireplumber-state-cleaner.service
 # ==========================================
 # sudo reboot
 ```
-

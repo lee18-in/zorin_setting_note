@@ -5,6 +5,101 @@ My Zorin OS configuration notes.
 
 # 設定相關
 
+## Gemini CLI 安裝與認證指南
+
+**Date**: June 7, 2026 at 04:22 PM
+**Turns**: 1
+**Source**: [Gemini Chat](https://gemini.google.com/app/ce85b0d4b224bb60)
+
+---
+
+#### Turn 1
+
+###### 🤖 Assistant
+
+```markdown
+## 系統環境建置文件：Zorin OS 原生部署 Gemini CLI 
+
+#### 1. 架構評估與依賴聲明
+* **目標系統**：Zorin OS / Ubuntu 系發行版
+* **核心依賴**：Node.js v20+ 
+* **衝突排除**：
+    * ❌ **嚴禁**使用 `sudo apt install nodejs npm` (版本過舊且易導致全域套件權限 EACCES 錯誤)
+    * ❌ **嚴禁**使用 `sudo snap install gemini` (命名空間衝突，Snap 庫中為通訊協定瀏覽器，非 Google CLI)
+
+---
+
+#### 2. 部署流程 (NVM 隔離安裝法)
+
+###### 2.1 環境初始化 (安裝 Node Version Manager)
+```bash
+## 1. 下載並執行 NVM 安裝腳本
+curl -o- [https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh](https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh) | bash
+
+## 2. 重新載入環境變數 (使 nvm 指令生效)
+source ~/.bashrc
+
+```
+
+###### 2.2 核心依賴安裝 (Node.js v20 LTS)
+
+```bash
+## 1. 請求安裝 v20 版本
+nvm install 20
+
+## 2. 設定 v20 為系統預設版本
+nvm use 20
+nvm alias default 20
+
+## 3. 狀態驗證 ✅ (預期輸出 Node v20.x.x 與 npm 10.x.x+)
+node -v
+npm -v
+
+```
+
+###### 2.3 核心應用安裝 (Gemini CLI)
+
+```bash
+## 透過 npm 進行全域安裝 (因 NVM 接管，無需 sudo 權限) 🚀
+npm install -g @google/gemini-cli
+
+```
+
+#### 3. 系統驗證與授權
+
+###### 3.1 啟動指令
+
+```bash
+gemini
+
+```
+
+###### 3.2 授權模式 (二擇一)
+
+| 驗證機制 | 觸發條件 | 適用環境 | 系統狀態 |
+| --- | --- | --- | --- |
+| OAuth 2.0 | 終端機直接輸入 gemini | 具備 GUI 瀏覽器之桌面環境 | ✅ 建議一般開發使用 |
+| API Key | export GEMINI_API_KEY="<金鑰>" | 無介面伺服器 (Headless) / CI 腳本 | ⚠️ 需綁定 Google Cloud / AI Studio 計費 |
+
+###### 3.3 CLI 內建指令檢測
+成功進入互動介面後，可輸入以下指令確認功能模組掛載狀態：
+
+- `/model`：切換底層驅動模型 (如 Gemini 1.5 Pro / Flash)
+- `/tools`：檢視可用之系統工具 (本地檔案讀寫、終端機執行等 MCP 伺服器)
+- `/help`：輸出指令手冊
+
+```
+
+**[資料信心度：+9 定理級實證]**
+
+```
+
+---
+
+*Exported from [Voyager](https://github.com/Nagi-ovo/gemini-voyager)*  
+*Generated on June 7, 2026 at 04:22 PM*
+
+
 ## Zorin OS 雙 WAN 負載平衡 (ECMP) 建置 - Date: 2026-04-09 - Environment: Zorin OS / Bash Terminal
 
 #### 🛠 Technical Review：
